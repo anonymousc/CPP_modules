@@ -1,0 +1,31 @@
+NAME = animal
+
+CXX = c++
+
+CXXFLAGS = -Wextra -Wall -Werror -std=c++98 
+# CXXFLAGS += -g3 -fsanitize=address
+
+SRC = $(wildcard *.cpp)
+
+OBJ = $(SRC:.cpp=.o)
+
+all : $(NAME)  
+
+$(NAME) : $(OBJ) Makefile
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME) 
+
+clean : 
+	rm -rf $(OBJ)
+
+fclean : clean 
+	rm -rf $(NAME)
+
+re : fclean all
+
+.SECONDARY : $(OBJ)
+
+
+
+
+
+
