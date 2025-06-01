@@ -29,5 +29,17 @@ int main()
     {
         std::cerr << "default catch" << std::endl; 
     }
+    try
+    {
+        Bureaucrat c(140 , "adam");
+        Form a("assignement form", 30, 2);
+        a.beSigned(c);
+    }
+    catch(...)
+    {
+        std::exception e;
+        std::cerr << e.what() << '\n';
+    }
+    
     
 }

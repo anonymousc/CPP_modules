@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "Form.hpp"
 
 class Bureaucrat
 {
@@ -14,7 +15,7 @@ class Bureaucrat
         Bureaucrat& operator=(const Bureaucrat& original);
         void incrementGrade();
         void decrementGrade();
-        void signForm(bool);
+        void signForm(Form a);
         class GradeTooHighException : public std::exception
         {
             public :
