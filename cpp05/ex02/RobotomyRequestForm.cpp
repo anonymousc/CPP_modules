@@ -20,20 +20,10 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 
 void RobotomyRequestForm::abstracted() const
 {
-    static int i;
-    switch (i)
-    {
-        case 0:
-            std::cout << "some drilling noises, " + this->name + " has been robotomized successfully." << std::endl;
-            i = 1;
-            break;
-        case 1:
-            std::cout << "robotmy failed" << std::endl;
-            i = 0;
-            break;
-        default:
-            break;
-    }
+    std::srand(time(NULL));
+        (rand() % 2 == 0) ? std::cout << "some drilling noises, " + this->name +\
+         " has been robotomized successfully 50% of the time." << std::endl\
+         : std::cout << "robotmy failed" << std::endl;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
