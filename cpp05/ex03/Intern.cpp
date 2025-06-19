@@ -31,19 +31,21 @@ bool get_which_form(std::string form)
 AForm *Intern::makeForm(std::string form, std::string name)
 {
     std::string form1[3] = {"robotomy request", "presidential pardon", "shrubbery creation"};
-    for (int i = 0; i < 3; i++)
+    switch(form[0])
     {
-       bool a = (strcmp(form.c_str() , form1[i].c_str()) == 0);
-       switch (a)
-       {
-            case true:
-                i == 0 ? std::cout << "Intern creates " << form1[i] << std::endl : std::cout << "Intern creates " << form1[i] << std::endl;
-                return (i == 0 ? new RobotomyRequestForm(name) : i == 1 ? new PresidentialPardonForm(name) : (AForm *) new ShrubberyCreationForm(name));
-                break;
-            case false:
-                throw  Intern::NoFormFound();
-                break; 
-       }
+        case 'r':
+            
+            return ((strcmp(form.c_str(), form1[0].c_str()) == 0) ? std::cout << "Intern creates " << form1[0] << std::endl, new RobotomyRequestForm(name) : throw Intern::NoFormFound());
+            break;
+        case 'p':
+            return ((strcmp(form.c_str(), form1[1].c_str()) == 0) ? std::cout << "Intern creates " << form1[1] << std::endl, new PresidentialPardonForm(name) : throw Intern::NoFormFound());
+            break;
+        case 's':
+            return ((strcmp(form.c_str(), form1[2].c_str()) == 0) ? std::cout << "Intern creates " << form1[1] << std::endl, new ShrubberyCreationForm(name) : throw Intern::NoFormFound());
+            break;
+        default:
+            throw Intern::NoFormFound(); 
+            break;
     }
     return (new ShrubberyCreationForm(name));
 }
