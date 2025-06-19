@@ -1,2 +1,2 @@
 # Preamble :
-soon...
+all about c++ and oop
