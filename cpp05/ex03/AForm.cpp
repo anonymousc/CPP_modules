@@ -33,11 +33,33 @@ const char *AForm::GradeTooLowException::what() const throw()
 {
     return ("grade is too Low to sign !!");
 }
-
+std::ostream& operator<<(std::ostream& os ,AForm &b)
+{
+    os << b.getName() << " , bureaucrat grade " << b.getGradeforsign() << " , bureaucrat grade to execute " << b.getGradetoexec();
+    if (b.getISsigned())
+        os << " , is signed";
+    else
+        os << " , is not signed";
+    return (os);
+}
 const std::string &AForm::getName() const
 {
     return (this->name);
 
+}
+void AForm::beSigned(Bureaucrat &b)
+{
+    if (b.getGrade() > this->gradeforsign)
+        throw AForm::GradeTooLowException();
+    else
+        this->iSsigned = true;
+}
+void AForm::execute(Bureaucrat const & executor) const
+{
+    if (!this->getISsigned())
+        throw AForm::GradeTooLowException();
+    if (executor.getGrade() > this->gradetoexec)
+        throw AForm::GradeTooLowException();
 }
 
 bool AForm::getISsigned() const

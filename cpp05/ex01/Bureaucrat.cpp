@@ -1,13 +1,5 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name("default constructor"), grade(150)
-{
-}
-Bureaucrat::Bureaucrat(const Bureaucrat& original)
-{
-    *this = original;
-}
-
 Bureaucrat::Bureaucrat(int _grade, std::string _name) : name(_name), grade(_grade)
 {
     if(this->grade > 150)
@@ -15,13 +7,15 @@ Bureaucrat::Bureaucrat(int _grade, std::string _name) : name(_name), grade(_grad
     if(this->grade < 1)
         throw Bureaucrat::GradeTooHighException();
 }
+Bureaucrat::Bureaucrat(const Bureaucrat& original)
+{
+    *this = original;
+}
+
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& original)
 { 
     if(this != &original)
-    {
-        (std::string)this->name = original.name;
         this->grade = original.grade;
-    }
     return (*this);
 }
 const char *Bureaucrat::GradeTooHighException::what() const throw()

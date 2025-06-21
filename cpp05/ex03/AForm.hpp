@@ -16,6 +16,7 @@ class AForm
         AForm(std::string Name, const int, const int );
         AForm& operator=(const AForm& original);
         AForm(const AForm& original);
+        void beSigned(Bureaucrat &b);
         class GradeTooHighException : public std::exception
         {
             public :

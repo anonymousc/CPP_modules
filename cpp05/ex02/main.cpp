@@ -18,9 +18,24 @@ int main()
         d.signForm(a);
         d.executeForm(a);
     }   
+    catch(AForm::GradeTooHighException& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    catch(AForm::GradeTooLowException& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    catch(Bureaucrat::GradeTooHighException& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    catch(Bureaucrat::GradeTooLowException& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
     catch(...)
     {
-        std::exception e;
-        std::cerr << e.what() << '\n';
+        std::cerr << "default catch" << '\n';
     }
 }

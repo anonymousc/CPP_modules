@@ -1,7 +1,7 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-Form::Form(std::string Name , const int gradeforSign, const int Gradetoexec) : name(Name), gradeforsign(gradeforSign), gradetoexec(Gradetoexec) 
+Form::Form(std::string Name , const int gradeforSign, const int Gradetoexec) : name(Name), iSsigned(false) , gradeforsign(gradeforSign), gradetoexec(Gradetoexec) 
 {
     if(this->gradeforsign < 1 || this->gradetoexec < 1)
         throw Form::GradeTooHighException();
@@ -10,7 +10,7 @@ Form::Form(std::string Name , const int gradeforSign, const int Gradetoexec) : n
     this->iSsigned = false;
 }
 
-Form::Form(const Form& original) : name(original.name), gradeforsign(original.gradeforsign), gradetoexec(original.gradetoexec)
+Form::Form(const Form& original) : name(original.name),iSsigned(original.iSsigned), gradeforsign(original.gradeforsign), gradetoexec(original.gradetoexec)
 {
     *this = original;
 }
@@ -33,17 +33,21 @@ const char *Form::GradeTooLowException::what() const throw()
 {
     return ("grade is too Low to sign !!");
 }
-
-void Form::beSigned(Bureaucrat &b) const
+std::ostream& operator<<(std::ostream& os ,Form &b)
 {
-    if (b.getGrade() <= this->gradeforsign)
-    {
-        std::cout << b.getName() << " signed " << this->name << std::endl;
-    }
+    os << b.getName() << " , bureaucrat grade " << b.getGradeforsign() << " , bureaucrat grade to execute " << b.getGradetoexec();
+    if (b.getISsigned())
+        os << " , is signed";
     else
-    {
-        std::cout << b.getName() << " couldn't sign " << this->name << " because grade too low!" << std::endl;
-    }
+        os << " , is not signed";
+    return (os);
+}
+
+void Form::beSigned(Bureaucrat &b)
+{
+    if (b.getGrade() > this->gradeforsign)
+        throw Form::GradeTooLowException();
+    iSsigned = true;
 }
 
 const std::string &Form::getName() const

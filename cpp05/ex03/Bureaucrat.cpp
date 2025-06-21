@@ -41,7 +41,7 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
     return "grade too low";
 }
-const int& Bureaucrat::getGrade(void)
+const int& Bureaucrat::getGrade(void) const
 {
     return (this->grade);
 }

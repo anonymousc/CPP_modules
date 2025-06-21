@@ -10,12 +10,12 @@ class Form
         bool  iSsigned;
         const int gradeforsign;
         const int gradetoexec;
-    public:    
         Form();
+    public:    
         Form(std::string Name, const int, const int );
         Form& operator=(const Form& original);
         Form(const Form& original);
-        void beSigned(Bureaucrat &b) const;
+        void beSigned(Bureaucrat &b);
         class GradeTooHighException : public std::exception
         {
             public :

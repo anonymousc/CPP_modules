@@ -1,4 +1,5 @@
 #include "RobotomyRequestForm.hpp"
+#include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm(std::string Name) : AForm("RobotomyRequest" , 72 , 45),  name(Name)
 {
@@ -20,7 +21,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 
 void RobotomyRequestForm::abstracted() const
 {
-    std::srand(time(NULL));
+    srand(time(NULL));
         (rand() % 2 == 0) ? std::cout << "some drilling noises, " + this->name +\
          " has been robotomized successfully 50% of the time." << std::endl\
          : std::cout << "robotmy failed" << std::endl;

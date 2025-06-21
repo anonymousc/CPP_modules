@@ -23,6 +23,22 @@ AForm& AForm::operator=(const AForm& original)
     }
     return (*this);
 }
+void AForm::execute(Bureaucrat const & executor) const
+{
+    if (!this->getISsigned())
+        throw AForm::GradeTooLowException();
+    if (executor.getGrade() > this->gradetoexec)
+        throw AForm::GradeTooLowException();
+    this->abstracted();
+}
+
+void AForm::beSigned(Bureaucrat &b)
+{
+    if (b.getGrade() > this->gradeforsign)
+        throw AForm::GradeTooLowException();
+    else
+        this->iSsigned = true;
+}
 
 const char *AForm::GradeTooHighException::what() const throw()
 {

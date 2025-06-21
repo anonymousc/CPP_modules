@@ -36,10 +36,25 @@ int main()
         Form a("assignement form", 30, 2);
         a.beSigned(c);
     }
+    catch(Form::GradeTooHighException& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    catch(Form::GradeTooLowException& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    catch(Bureaucrat::GradeTooHighException& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    catch(Bureaucrat::GradeTooLowException& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
     catch(...)
     {
-        std::exception e;
-        std::cerr << e.what() << '\n';
+        std::cerr << "default catch" << std::endl; 
     }
     
     
