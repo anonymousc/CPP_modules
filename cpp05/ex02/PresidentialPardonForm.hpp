@@ -7,11 +7,11 @@ class PresidentialPardonForm : public AForm
     private:
         std::string name;
         PresidentialPardonForm();
-        public:
+        void abstracted() const;
+    public:
         PresidentialPardonForm(std::string Target);
         PresidentialPardonForm(const PresidentialPardonForm& original);
         PresidentialPardonForm& operator=(const PresidentialPardonForm& original);
-        void abstracted() const;
         ~PresidentialPardonForm();
 };
 

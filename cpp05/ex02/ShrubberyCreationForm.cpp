@@ -16,7 +16,6 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
     return (*this);
 }
 
-
 void ShrubberyCreationForm::abstracted() const
 {
     std::string filename = this->name;

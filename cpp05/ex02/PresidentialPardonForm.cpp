@@ -17,6 +17,7 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
     }
     return (*this);
 }
+
 void PresidentialPardonForm::abstracted() const
 {
     std::cout << this->name + " has been pardoned by Zaphod Beeblebrox" << std::endl;
@@ -24,4 +25,5 @@ void PresidentialPardonForm::abstracted() const
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
+    
 }

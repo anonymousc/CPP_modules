@@ -8,15 +8,15 @@ int main()
     try
     {
 
+        Bureaucrat d(1 , "berry");
         PresidentialPardonForm a("test");
         RobotomyRequestForm b("adam");
         ShrubberyCreationForm c("adam1");
-        a.abstracted();
-        b.abstracted();
-        c.abstracted();
-        Bureaucrat d(10 , "berry");
-        d.signForm(a);
-        d.executeForm(a);
+        a.beSigned(d);
+        b.beSigned(d);
+        a.execute(d);
+        b.execute(d);
+        c.execute(d);
     }   
     catch(AForm::GradeTooHighException& e)
     {

@@ -41,6 +41,7 @@ std::ostream& operator<<(std::ostream& os ,Bureaucrat& b)
     os << b.getName() << " , bureaucrat grade " << b.getGrade();
     return (os);
 }
+
 void Bureaucrat::incrementGrade()
 {
         this->grade -= 1;

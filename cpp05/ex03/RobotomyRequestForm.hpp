@@ -6,14 +6,14 @@
 
 class RobotomyRequestForm : public AForm
 {
-private:
-    std::string name;
-    RobotomyRequestForm();
+    private:
+        std::string name;
+        void abstracted() const;
+        RobotomyRequestForm();
     public:
-    RobotomyRequestForm(std::string Name);
-    RobotomyRequestForm(const RobotomyRequestForm& original);
-    RobotomyRequestForm& operator=(const RobotomyRequestForm& original);
-    void abstracted() const;
-    ~RobotomyRequestForm();
+        RobotomyRequestForm(std::string Name);
+        RobotomyRequestForm(const RobotomyRequestForm& original);
+        RobotomyRequestForm& operator=(const RobotomyRequestForm& original);
+        ~RobotomyRequestForm();
 };
 

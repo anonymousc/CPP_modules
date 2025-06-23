@@ -25,9 +25,7 @@ AForm& AForm::operator=(const AForm& original)
 }
 void AForm::execute(Bureaucrat const & executor) const
 {
-    if (!this->getISsigned())
-        throw AForm::GradeTooLowException();
-    if (executor.getGrade() > this->gradetoexec)
+    if (!this->getISsigned() || executor.getGrade() > this->gradetoexec)
         throw AForm::GradeTooLowException();
     this->abstracted();
 }

@@ -1,18 +1,8 @@
 #include "Intern.hpp"
 #include <cstring>
+
 Intern::Intern()
 {
-}
-int _strncmp(const char *s1, const char *s2, size_t n)
-{
-    size_t i = 0;
-    while (i < n && s1[i] && s2[i])
-    {
-        if (s1[i] != s2[i])
-            return (1);
-        i++;
-    }
-    return (0);
 }
 Intern::Intern(const Intern& original)
 {
@@ -23,10 +13,6 @@ Intern &Intern::operator=(const Intern& original)
     (void)original;
     return (*this);
 }
-bool get_which_form(std::string form)
-{
-    return ((_strncmp(form.c_str() , "Robotomy" , 9) || _strncmp(form.c_str() , "robotomy" , 9)) || _strncmp(form.c_str(), "PresidentialPardion" , 20) || _strncmp(form.c_str(), "ShrubberyCreation" , 21));    
-}
 
 AForm *Intern::makeForm(std::string form, std::string name)
 {
@@ -35,7 +21,7 @@ AForm *Intern::makeForm(std::string form, std::string name)
     {
         case 'r':
             
-            return ((strcmp(form.c_str(), form1[0].c_str()) == 0) ? std::cout << "Intern creates " << form1[0] << std::endl, new RobotomyRequestForm(name) : throw Intern::NoFormFound());
+            return ((strcmp(form.c_str(), form1[0].c_str()) == 0) ? std::cout << "Intern creates " << form1[0] << std::endl,  new RobotomyRequestForm(name) : throw Intern::NoFormFound());
             break;
         case 'p':
             return ((strcmp(form.c_str(), form1[1].c_str()) == 0) ? std::cout << "Intern creates " << form1[1] << std::endl, new PresidentialPardonForm(name) : throw Intern::NoFormFound());
@@ -47,7 +33,7 @@ AForm *Intern::makeForm(std::string form, std::string name)
             throw Intern::NoFormFound(); 
             break;
     }
-    return (new ShrubberyCreationForm(name));
+    return (NULL);
 }
 const char *Intern::NoFormFound::what() const throw()
 {

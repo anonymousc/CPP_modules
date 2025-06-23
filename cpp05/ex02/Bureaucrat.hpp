@@ -33,4 +33,5 @@ class Bureaucrat
         const int& getGrade() const;
         ~Bureaucrat();
 };
+
 std::ostream& operator<<(std::ostream& os ,Bureaucrat &b);

@@ -29,4 +29,5 @@ void RobotomyRequestForm::abstracted() const
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
+
 }

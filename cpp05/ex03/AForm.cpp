@@ -56,10 +56,10 @@ void AForm::beSigned(Bureaucrat &b)
 }
 void AForm::execute(Bureaucrat const & executor) const
 {
-    if (!this->getISsigned())
+    if (!this->getISsigned() || executor.getGrade() > this->gradetoexec)
         throw AForm::GradeTooLowException();
-    if (executor.getGrade() > this->gradetoexec)
-        throw AForm::GradeTooLowException();
+    else
+        abstracted();
 }
 
 bool AForm::getISsigned() const

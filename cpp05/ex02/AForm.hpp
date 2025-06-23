@@ -35,4 +35,5 @@ class AForm
         int getGradetoexec() const;
         virtual ~AForm();
 };
+
 std::ostream& operator<<(std::ostream& os ,AForm &b);
