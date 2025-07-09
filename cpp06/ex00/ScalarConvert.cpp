@@ -67,7 +67,7 @@ void ScalarConvert::convert(std::string name)
         std::cout << "char : '" << static_cast<char>(convertion) << "'" << std::endl;
     else if(convertion > CHAR_MAX || convertion < CHAR_MIN)
         std::cout << "char : impossible" << std::endl;
-    else 
+    else
         std::cout << "char : Non displayable" << std::endl;
     std::cout << "int : " << static_cast<int>(convertion) << std::endl;
     std::cout << "float : " << std::fixed << std::setprecision(1) << static_cast<float>(convertion) << "f" << std::endl;
