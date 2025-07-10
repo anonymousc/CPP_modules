@@ -27,7 +27,7 @@ double parse(const std::string &ref, bool &isnan , bool &isinf)
     {
         data = regexec(&re, ref.c_str(), 0, NULL, 0);
         if(data == 0)
-            return (atof(ref.c_str()));
+            return ((*ref.c_str()));
     }
     return (throw ScalarConvert::FailedToRun(), 0.0f);
 }
