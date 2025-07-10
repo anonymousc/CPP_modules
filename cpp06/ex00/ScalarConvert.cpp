@@ -48,7 +48,7 @@ void ScalarConvert::convert(std::string name)
         std::cout << "char : impossible" << std::endl;
         std::cout << "int : impossible" << std::endl;
         std::cout << "float : impossible" << std::endl;
-        std::cout << "double : impossible" << std::endl;
+        std::cout << "double : " << std::fixed << std::setprecision(1) << atof(name.c_str()) << std::endl;
         return ;
     }
     bool isnan, isinf;
