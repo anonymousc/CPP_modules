@@ -11,6 +11,12 @@ double parse(const std::string &ref, bool &isnan , bool &isinf)
         if(data == 0)
             return (atof(ref.c_str()));
     }
+    if(!regcomp(&re , INT, REG_EXTENDED))
+    {
+        data = regexec(&re, ref.c_str(), 0, NULL, 0);
+        if(data == 0)
+            return (atoll(ref.c_str()));
+    }
     if(!regcomp(&re, INF, REG_EXTENDED))
     {
         data = regexec(&re, ref.c_str(), 0, NULL, 0);
@@ -37,7 +43,7 @@ const char *ScalarConvert::FailedToRun::what() const throw()
 }
 void ScalarConvert::convert(std::string name)
 {
-    if(atoll(name.c_str()) > __INT_MAX__)
+    if(atoll(name.c_str()) > __INT_MAX__ || atoll(name.c_str()) < INT_MIN || name.empty())
     {
         std::cout << "char : impossible" << std::endl;
         std::cout << "int : impossible" << std::endl;
@@ -63,10 +69,10 @@ void ScalarConvert::convert(std::string name)
         std::cout << "double : nan" << std::endl;
         return ;
     }
-    if(isprint(convertion))
-        std::cout << "char : '" << static_cast<char>(convertion) << "'" << std::endl;
-    else if(convertion > CHAR_MAX || convertion < CHAR_MIN)
+    if(convertion > CHAR_MAX || convertion < CHAR_MIN)
         std::cout << "char : impossible" << std::endl;
+    else if(isprint(convertion))
+        std::cout << "char : '" << static_cast<char>(convertion) << "'" << std::endl;
     else
         std::cout << "char : Non displayable" << std::endl;
     std::cout << "int : " << static_cast<int>(convertion) << std::endl;

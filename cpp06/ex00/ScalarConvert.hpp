@@ -7,7 +7,8 @@
 #include <iomanip>
 #include <limits.h>
 
-#define F "^[-+]?[0-9]+[.]?[0-9]?+[f]?$"
+#define F "^[-+]?[0-9]+[.][0-9]+[f]?$"
+#define INT "^[-+]?[0-9]+$"
 #define Nan "^nan[f]?$"
 #define INF "^[-+]inff$"
 #define CHAR "^.$"
