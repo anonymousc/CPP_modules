@@ -30,27 +30,29 @@ template <typename T> class MutantStack : public std::stack<T>
             {
                 return (ptr);
             }
-            iterator& operator++()
+             iterator& operator++()
             {
                 ptr++;
-                return (*this);
+                return *this;
             }
+            
             iterator& operator--()
             {
                 ptr--;
-                return (*this);
+                return *this;
             }
-            iterator& operator++(int)
+            
+            iterator operator++(int)
             {
                 iterator tmp = *this;
                 ++ptr;
-                return (tmp);
+                return tmp;
             }
-            iterator& operator--(int)
+            iterator operator--(int)
             {
                 iterator tmp = *this;
                 --ptr;
-                return (tmp);
+                return tmp;
             }
             bool operator==(const iterator& op)
             {
